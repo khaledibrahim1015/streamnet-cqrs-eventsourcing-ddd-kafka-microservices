@@ -15,3 +15,11 @@
 /StreamNet/SM-Post/Post.Query/Post.Query.Domain/obj
 /StreamNet/SM-Post/Post.Query/Post.Query.Infrastructure/obj
 /StreamNet/SM-Post/Post.Common/Post.Common/obj
+/StreamNet/CQRS-ES/CQRS.Core/bin/Debug/net6.0
+/StreamNet/SM-Post/Post.Cmd/Post.Cmd.Api/bin/Debug/net6.0
+/StreamNet/SM-Post/Post.Cmd/Post.Cmd.Domain/bin/Debug/net6.0
+/StreamNet/SM-Post/Post.Cmd/Post.Cmd.Infrastructure/bin/Debug/net6.0
+/StreamNet/SM-Post/Post.Common/Post.Common/bin/Debug/net6.0
+/StreamNet/SM-Post/Post.Query/Post.Query.Api/bin/Debug/net6.0
+/StreamNet/SM-Post/Post.Query/Post.Query.Domain/bin/Debug/net6.0
+/StreamNet/SM-Post/Post.Query/Post.Query.Infrastructure/bin/Debug/net6.0
