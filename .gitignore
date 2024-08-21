@@ -1,0 +1,16 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/StreamNet/.vs/StreamNet/FileContentIndex
+/StreamNet/.vs/StreamNet/v17/.suo
+/StreamNet/.vs/StreamNet/v17/.suo
+/StreamNet/CQRS-ES/CQRS.Core/obj
+/StreamNet/.vs
+/StreamNet/SM-Post/Post.Cmd/Post.Cmd.Api/obj
+/StreamNet/SM-Post/Post.Cmd/Post.Cmd.Domain/obj
+/StreamNet/SM-Post/Post.Cmd/Post.Cmd.Infrastructure/obj
+/StreamNet/SM-Post/Post.Query/Post.Query.Api/obj
+/StreamNet/SM-Post/Post.Query/Post.Query.Domain/obj
+/StreamNet/SM-Post/Post.Query/Post.Query.Infrastructure/obj
