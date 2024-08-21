@@ -1,4 +1,6 @@
-﻿using Post.Cmd.Infrastructure.Configuraion;
+﻿using CQRS.Core.Domain;
+using Post.Cmd.Infrastructure.Configuraion;
+using Post.Cmd.Infrastructure.Repositories;
 
 namespace Post.Cmd.Api.Extensions
 {
@@ -8,6 +10,7 @@ namespace Post.Cmd.Api.Extensions
         {
             //  Add Services to The Conatainer 
             services.Configure<MongoDbConfiguration>(configuration.GetSection(nameof(MongoDbConfiguration)));
+            services.AddScoped<IEventStoreRepository, EventStoreRepository>();
 
             return services;
         }
