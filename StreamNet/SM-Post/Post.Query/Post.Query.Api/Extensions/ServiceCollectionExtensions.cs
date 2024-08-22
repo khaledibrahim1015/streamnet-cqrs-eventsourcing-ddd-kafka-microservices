@@ -18,6 +18,11 @@ namespace Post.Query.Api.Extensions
             });
 
 
+            //  Create Database From Code 
+            var dbContext = services.BuildServiceProvider().GetRequiredService<DatabaseContext>();
+            dbContext.Database.EnsureCreated();
+
+
 
             return services;
         }
