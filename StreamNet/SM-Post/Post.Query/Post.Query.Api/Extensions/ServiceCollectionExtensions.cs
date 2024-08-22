@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Post.Query.Domain.Repositories;
 using Post.Query.Infrastructure.DataAccess;
+using Post.Query.Infrastructure.Handlers;
+using Post.Query.Infrastructure.Repositories;
 
 namespace Post.Query.Api.Extensions
 {
@@ -17,11 +20,14 @@ namespace Post.Query.Api.Extensions
                 return databaseCtxFactory.CreateDbContext();
             });
 
-
             //  Create Database From Code 
             var dbContext = services.BuildServiceProvider().GetRequiredService<DatabaseContext>();
             dbContext.Database.EnsureCreated();
 
+
+            services.AddScoped<IPostRepository, PostRepository>();
+            services.AddScoped<ICommenRepository, CommentRepository>();
+            services.AddScoped<IEventHandler, Post.Query.Infrastructure.Handlers.EventHandler>();
 
 
             return services;
