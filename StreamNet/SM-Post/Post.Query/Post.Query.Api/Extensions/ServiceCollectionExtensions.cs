@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Confluent.Kafka;
+using Microsoft.EntityFrameworkCore;
 using Post.Query.Domain.Repositories;
+using Post.Query.Infrastructure.Consumers;
 using Post.Query.Infrastructure.DataAccess;
 using Post.Query.Infrastructure.Handlers;
 using Post.Query.Infrastructure.Repositories;
@@ -29,7 +31,9 @@ namespace Post.Query.Api.Extensions
             services.AddScoped<ICommenRepository, CommentRepository>();
             services.AddScoped<IEventHandler, Post.Query.Infrastructure.Handlers.EventHandler>();
 
+            services.Configure<ConsumerConfig>(configuration.GetSection(nameof(ConsumerConfig)));
 
+            services.AddHostedService<ConsumerHostedService>();
             return services;
         }
     }
