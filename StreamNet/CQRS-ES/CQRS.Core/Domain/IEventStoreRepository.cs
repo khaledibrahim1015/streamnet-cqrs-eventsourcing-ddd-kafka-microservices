@@ -5,6 +5,9 @@ namespace CQRS.Core.Domain;
 public interface IEventStoreRepository
 {
 
-    Task SaveAsync(EventModel @event);
-    Task<IEnumerable<EventModel>> FinfByAggregateId(Guid aggregateId);
+
+    Task<IEnumerable<EventModel>> FindByAggregateId(Guid aggregateId);
+    Task SaveAsync(EventModel @event, OutboxMessage outboxMessage);
+    Task<IEnumerable<OutboxMessage>> GetPendingOutboxMessagesAsync();
+    Task MarkOutboxMessageAsProcessedAsync(Guid messageId);
 }
