@@ -1,3 +1,5 @@
+using Post.Query.Api.Extensions;
+
 namespace Post.Query.Api
 {
     public class Program
@@ -7,6 +9,7 @@ namespace Post.Query.Api
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddRequiredService(builder.Configuration);
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
