@@ -1,5 +1,7 @@
 ﻿using Confluent.Kafka;
 using Microsoft.EntityFrameworkCore;
+using Post.Query.Api.Dispatchers;
+using Post.Query.Api.Queries;
 using Post.Query.Domain.Repositories;
 using Post.Query.Infrastructure.Consumers;
 using Post.Query.Infrastructure.DataAccess;
@@ -30,10 +32,24 @@ namespace Post.Query.Api.Extensions
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<ICommenRepository, CommentRepository>();
             services.AddScoped<IEventHandler, Post.Query.Infrastructure.Handlers.EventHandler>();
-
+            services.AddScoped<IQueryHandler, QueryHandler>();
             services.Configure<ConsumerConfig>(configuration.GetSection(nameof(ConsumerConfig)));
 
             services.AddHostedService<ConsumerHostedService>();
+
+            // Register QueryHandlers Method 
+            var queryHandler = services.BuildServiceProvider().GetRequiredService<IQueryHandler>();
+            var queryDispatcher = new QueryDispatcher();
+            queryDispatcher.RegisterHandler<FindAllPostsQuery>(queryHandler.HandleAsync);
+            queryDispatcher.RegisterHandler<FindPostByIdQuery>(queryHandler.HandleAsync);
+            queryDispatcher.RegisterHandler<FindPostsWithAuthorQuery>(queryHandler.HandleAsync);
+            queryDispatcher.RegisterHandler<FindPostsWithCommentsQuery>(queryHandler.HandleAsync);
+            queryDispatcher.RegisterHandler<FindPostsWithLikesQuery>(queryHandler.HandleAsync);
+
+
+
+
+
             return services;
         }
     }
